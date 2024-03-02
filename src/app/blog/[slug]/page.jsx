@@ -1,27 +1,56 @@
 import Image from 'next/image'
+import PostUser from '../../../components/postUser/postUser'
 import styles from './singlePost.module.css'
+import { Suspense } from 'react'
+import  {getPost}  from '../../lib/data';
+
+//With API
+//const getData = async (slug) => {
+  //With API
+
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {cache: "no-store"})
+
+//   if(!res.ok) {
+//     throw new Error("Something went wrong");
+//   }
+
+//   return res.json()
+// }
+
+
+
  
-const SinglePost = () => {
+const SinglePost = async ({params}) => {
+  const {slug} = params;
+
+  const post  = await getPost(slug);
+
+  console.log(post)
+
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
-        <Image src="/blog.jpg" alt='Post' fill className={styles.img} />
-      </div>
+      {post?.img && (
+        <div className={styles.imgContainer}>
+          <Image src={post.img} alt="" fill className={styles.img} />
+        </div>
+      )}
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.detail}>
-          <Image src="/user.jpg" className={styles.avatar} width={40} height={40} alt="user" />
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>John Doe</span>
-          </div> 
+          
+          {post && (
+            <>
+              <Suspense fallback={<div>Loading...</div>}></Suspense>
+              <PostUser userId={post?.userId}/>
+            </>
+          )}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>01.03.2024</span>
+            <span className={styles.detailValue}>{post.createdAt.toString().slice(0,16)}</span>
           </div> 
         </div>
         <div className={styles.content}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit omnis porro ullam veritatis doloribus est, dolorem nostrum, sed vel iusto laboriosam adipisci inventore, amet alias culpa quidem voluptatum. In, corrupti.
+          {post?.desc}
         </div>
       </div>
     </div>

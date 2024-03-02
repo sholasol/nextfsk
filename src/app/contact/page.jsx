@@ -1,11 +1,16 @@
+"use client"
 import Image from "next/image";
 import styles from './contact.module.css'
 
-export const metadata = {
-  title: "Contact Us",
-  description: "Contact Us Page Description"
-}
+// export const metadata = {
+//   title: "Contact Us",
+//   description: "Contact Us Page Description"
+// }
+
 const Contact = () => {
+
+console.log("It works here")
+
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
