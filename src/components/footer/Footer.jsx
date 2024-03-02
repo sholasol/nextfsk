@@ -1,6 +1,12 @@
+import styles from './footer.module.css'
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className={styles.container}>
+      <div className={styles.logo}>HybridDev</div>
+      <div className={styles.text}>
+        Lorem creative thoughts agency © All rights reserved.
+      </div>
+    </div>
   )
 }
 
