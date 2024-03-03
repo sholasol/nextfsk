@@ -1,6 +1,11 @@
 import Image from "next/image"
 import styles from './about.module.css'
 
+export const metadata = {
+  title: "About Us",
+  description: "Who we are",
+};
+
 const About = () => {
   return (
     <>

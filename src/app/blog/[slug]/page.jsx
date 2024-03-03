@@ -4,6 +4,8 @@ import styles from './singlePost.module.css'
 import { Suspense } from 'react'
 import  {getPost}  from '../../lib/data';
 
+
+
 //With API
 //const getData = async (slug) => {
   //With API
@@ -16,7 +18,16 @@ import  {getPost}  from '../../lib/data';
 
 //   return res.json()
 // }
+export const generateMetaData = async ({params}) => {
+    const {slug} = params;
 
+    const post = await getPost(slug);
+
+    return {
+      title: post.title,
+      description: post.desc,
+    };
+}
 
 
  
