@@ -7,21 +7,26 @@ import  {getPost}  from '../../lib/data';
 
 
 //With API
-//const getData = async (slug) => {
-  //With API
+const getData = async (slug) => {
 
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {cache: "no-store"})
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {cache: "no-store"})
 
-//   if(!res.ok) {
-//     throw new Error("Something went wrong");
-//   }
+  if(!res.ok) {
+    throw new Error("Something went wrong");
+  }
 
-//   return res.json()
-// }
+  return res.json()
+}
+
+
 export const generateMetaData = async ({params}) => {
     const {slug} = params;
 
-    const post = await getPost(slug);
+    //With API
+    const post = await getData(slug);
+
+    //without API
+    //const post = await getPost(slug);
 
     return {
       title: post.title,
