@@ -1,0 +1,60 @@
+.user {
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.userButton {
+    padding: 5px 10px;
+    background-color: rgba(220, 20, 60, 0.593);
+    color: var(--textColor);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+}
+
+.form input {
+    padding: 20px;
+    background-color: var(--textSoft);
+    color: var(--textColor);
+    border: none;
+    border-radius: 5px;
+}
+
+.form select {
+    padding: 20px;
+    background-color: var(--textSoft);
+    color: var(--bgSoft);
+    border: none;
+    border-radius: 5px;
+}
+
+.form button {
+    padding: 20px;
+    cursor: pointer;
+    background-color: var(--btn);
+    color: var(--textColor);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.error {
+    color: #f54747;
+    ;
+}
